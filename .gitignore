@@ -1,0 +1,6 @@
+# tensorboad用のディレクトリは無視する
+*logs
+# jupyterは無視
+.ipynb_checkpoints
+.DS_Store
+__pycache__/
