@@ -4,3 +4,6 @@
 .ipynb_checkpoints
 .DS_Store
 __pycache__/
+generated_images/
+*.h5
+*/

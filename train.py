@@ -10,11 +10,30 @@ from keras.models import Sequential
 
 BATCH_SIZE = 32
 NUM_EPOCH = 20
-GENERATED_IMAGE_PATH = 'generated_images/'  # 生成画像の保存先
+GENERATED_IMAGE_PATH = 'generated_images2/'  # 生成画像の保存先
 path = pathlib.Path(GENERATED_IMAGE_PATH)
 
 
+def set_trainable(model, trainable):
+    """
+    Set the trainable
+
+    Parameters
+    -------------------
+    trainable: bool
+
+    model: class model
+        keras model
+    """
+    model.trainable = trainable
+    for layer in model.layers:
+        layer.trainable = trainable
+
+
 def train():
+    """
+    train dcgan
+    """
     # X_train.shape=(60000, 28, 28)
     (X_train, y_train), (_, _) = mnist.load_data()
     X_train = (X_train.astype(np.float32) - 127.5)/127.5  # -1~1の範囲にする
@@ -27,7 +46,7 @@ def train():
     discriminator.compile(loss='binary_crossentropy', optimizer=d_opt)
 
     # generator+discriminator （discriminator部分の重みは固定）
-    discriminator.trainable = False
+    set_trainable(discriminator, False)
     generator = generator_model()
     dcgan = Sequential([generator, discriminator])
     g_opt = Adam(lr=2e-4, beta_1=0.5)
@@ -52,7 +71,8 @@ def train():
                 image = image*127.5 + 127.5
                 if not path.exists():
                     path.mkdir()
-                    plt.imshow(image[:, :], cmap=plt.cm.gray_r)
+                plt.imshow(image[:, :], cmap=plt.cm.gray_r)
+                plt.savefig(path / "epoch{0}index{1}.pdf".format(epoch, index))
             # discriminatorを更新
             X = np.concatenate((image_batch, generated_images), axis=0)
             y = [1]*BATCH_SIZE + [0]*BATCH_SIZE

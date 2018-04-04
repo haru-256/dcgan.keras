@@ -10,9 +10,6 @@ def combine_images(generated_images):
     combined_image = np.zeros((height*rows, width*cols),
                               dtype=generated_images.dtype)
 
-    print("width", width)
-    print("height", height)
-    print(combined_image.shape)
     for index, image in enumerate(generated_images):
         i = int(index/cols)
         j = index % cols
