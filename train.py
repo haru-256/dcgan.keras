@@ -58,7 +58,7 @@ def train():
     for epoch in range(NUM_EPOCH):
 
         for index in range(num_batches):
-            noise = np.array([np.random.randn(-1, 1, 100)
+            noise = np.array([np.random.randn(100)
                               for _ in range(BATCH_SIZE)])  # noiseデータを作成
             # train_batshを作成
             image_batch = X_train[index*BATCH_SIZE:(index+1)*BATCH_SIZE]
