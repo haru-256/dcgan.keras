@@ -18,13 +18,18 @@ def discriminator_model():
     outputs = Conv2D(filters=64,
                      kernel_size=(5, 5),
                      padding="same",
-                     strides=(2, 2))(inputs)
+                     strides=(2, 2),
+                     kernel_initializer="he_normal",
+                     bias_initializer="random_normal")(inputs)
     outputs = LeakyReLU(alpha=0.2)(outputs)
     outputs = Flatten()(outputs)
-    outputs = Dense(units=256)(outputs)
-    outputs = LeakyReLU(alpha=0.2)(outputs)
+    outputs = Dense(units=256,
+                    kernel_initializer="he_normal",
+                    bias_initializer="random_normal")(outputs)
     outputs = Dropout(rate=0.5)(outputs)
-    outputs = Dense(1)(outputs)
+    outputs = LeakyReLU(alpha=0.2)(outputs)
+    outputs = Dense(1, kernel_initializer="he_normal",
+                    bias_initializer="random_normal")(outputs)
     outputs = Activation("sigmoid")(outputs)
 
     model = Model(inputs=inputs, outputs=outputs)

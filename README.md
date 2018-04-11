@@ -1,1 +1,2 @@
-# imple DCGAN by Keras
+# implement DCGAN by Keras
+
