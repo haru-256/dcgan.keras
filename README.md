@@ -16,3 +16,7 @@ $ python generator
 $ python discriminator
 ```
 
+# 損失関数
+
+<img src="https://latex.codecogs.com/gif.latex?\min&space;\log{D\left(G(x)\right)}" />
+
