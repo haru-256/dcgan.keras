@@ -17,6 +17,7 @@ $ python discriminator
 ```
 
 # 損失関数
-
-<img src="https://latex.codecogs.com/gif.latex?\min&space;\log{D\left(G(x)\right)}" />
-
+### Generator
+<img src="https://latex.codecogs.com/gif.latex?\min&space;\frac{1}{N}&space;\sum_{n=1}^N&space;\log{D\left(G(\boldsymbol{z}_n)\right)}" />
+### Discriminator
+<img src="https://latex.codecogs.com/gif.latex?\frac{1}{N}&space;\sum_{n=1}^N&space;\left\{&space;\log\left[&space;D\left(\boldsymbol{x_n}\right)&space;\right]&space;&plus;&space;\log\left[&space;1-&space;D\left(G(\boldsymbol{z}_n)\right)&space;\right]&space;\right\}" />
