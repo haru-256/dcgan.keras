@@ -6,6 +6,8 @@
 
 # 実験条件
 基本的な実験条件などは論文にかいてあるとおりです．
+
+しかし，Lossを一つにしたため，DiscriminatorのBNは取り除いています．
 ## モデル
 ### Generator
 ```shell:bash
