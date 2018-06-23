@@ -77,9 +77,9 @@ def train():
             noise = np.array([np.random.uniform(-1, 1, 100)
                               for _ in range(BATCH_SIZE)])
             g_loss, g_acc = dcgan.train_on_batch(noise, [1]*BATCH_SIZE)
-            print("epoch: {0:4d} g_loss: {1:.4f} d_loss:{2:.4f} " \
+            print("epoch: {0:4d} index: {5:4d} g_loss: {1:.4f} d_loss:{2:.4f} " \
                   "g_acc: {3:.4f} d_acc: {4:.4f}".format(epoch, g_loss,
-                                                         d_loss, g_acc, d_acc))
+                                                         d_loss, g_acc, d_acc, index))
 
         # epoch ごとに生成画像を出力
         image = combine_images(generated_images)
