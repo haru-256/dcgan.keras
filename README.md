@@ -8,6 +8,7 @@
 基本的な実験条件などは論文にかいてあるとおりです．
 
 しかし，Lossを一つにしたため，DiscriminatorのBNは取り除いています．
+代わりに，DiscriminatorにDropOutを入れています．
 ## モデル
 ### Generator
 ```shell:bash
