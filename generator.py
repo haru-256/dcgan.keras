@@ -33,7 +33,7 @@ def generator_model():
     # outputs = UpSampling2D(size=(2, 2))(outputs)
     outputs = Conv2DTranspose(filters=1,
                               kernel_size=(5, 5),
-                              strides=(2,2),
+                              strides=(2, 2),
                               padding="same")(outputs)
     outputs = Activation("tanh")(outputs)
 
