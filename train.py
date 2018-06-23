@@ -10,7 +10,7 @@ from keras.models import Sequential
 
 BATCH_SIZE = 128 
 NUM_EPOCH = 100
-GENERATED_IMAGE_PATH = 'generated_images2/'  # 生成画像の保存先
+GENERATED_IMAGE_PATH = 'generated_images/'  # 生成画像の保存先
 path = pathlib.Path(GENERATED_IMAGE_PATH)
 
 
