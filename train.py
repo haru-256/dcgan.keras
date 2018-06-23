@@ -78,7 +78,7 @@ def train():
                               for _ in range(BATCH_SIZE)])
             g_loss, g_acc = dcgan.train_on_batch(noise, [1]*BATCH_SIZE)
             print("epoch: {0:4d} index: {5:4d} g_loss: {1:.4f} d_loss:{2:.4f} " \
-                  "g_acc: {3:.4f} d_acc: {4:.4f}".format(epoch, g_loss,
+                  "g_acc: {3:.4f} d_acc: {4:.4f}".format(epoch + 1, g_loss,
                                                          d_loss, g_acc, d_acc, index))
 
         # epoch ごとに生成画像を出力
@@ -87,7 +87,7 @@ def train():
         if not path.exists():
             path.mkdir()
         plt.imshow(image[:, :], cmap=plt.cm.gray)
-        plt.savefig(path / "epoch{0}.jpg".format(epoch))
+        plt.savefig(path / "epoch{0}.jpg".format(epoch + 1))
 
         generator.save_weights('generator.h5')
         discriminator.save_weights('discriminator.h5')
