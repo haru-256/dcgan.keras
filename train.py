@@ -8,9 +8,9 @@ from generator import generator_model
 from combine_images import combine_images
 from keras.models import Sequential
 
-BATCH_SIZE = 32
+BATCH_SIZE = 128 
 NUM_EPOCH = 20
-GENERATED_IMAGE_PATH = 'generated_images2/'  # 生成画像の保存先
+GENERATED_IMAGE_PATH = 'generated_images/'  # 生成画像の保存先
 path = pathlib.Path(GENERATED_IMAGE_PATH)
 
 
@@ -42,7 +42,8 @@ def train():
 
     # 後に重みは固定させるためにdiscriminator単体を先に作る
     discriminator = discriminator_model()
-    d_opt = Adam(lr=1e-5, beta_1=0.1)
+    d_opt = Adam(lr=2e-4, beta_1=0.5) 
+    # d_opt = Adam(lr=1e-5, beta_1=0.1)  # 論文ではDiscriminato, Generatorともにlr=2e-4, beta_1 = 0.5であったが，コード例より変更した
     discriminator.compile(loss='binary_crossentropy', optimizer=d_opt)
 
     # generator+discriminator （discriminator部分の重みは固定）
