@@ -9,7 +9,7 @@ from combine_images import combine_images
 from keras.models import Sequential
 
 BATCH_SIZE = 128 
-NUM_EPOCH = 100
+NUM_EPOCH = 20 
 GENERATED_IMAGE_PATH = 'generated_images/'  # 生成画像の保存先
 path = pathlib.Path(GENERATED_IMAGE_PATH)
 
