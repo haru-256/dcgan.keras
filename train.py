@@ -61,7 +61,7 @@ def train():
     for epoch in range(NUM_EPOCH):
 
         for index in range(num_batches):
-            noise = np.array([np.random.randn(100)
+            noise = np.array([np.random.uniform(-1, 1, 100)
                               for _ in range(BATCH_SIZE)])  # noiseデータを作成
             # train_batshを作成
             image_batch = X_train[index*BATCH_SIZE:(index+1)*BATCH_SIZE]
@@ -82,6 +82,9 @@ def train():
                                                          d_loss, g_acc, d_acc, index))
 
         # epoch ごとに生成画像を出力
+        noise = np.array([np.random.uniform(-1, 1, 100)
+                              for _ in range(7*7)])  # noiseデータを作成
+        generated_images = generator.predict(noise, verbose=0)
         image = combine_images(generated_images)
         image = image*127.5 + 127.5
         if not path.exists():
