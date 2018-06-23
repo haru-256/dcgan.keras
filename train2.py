@@ -87,7 +87,7 @@ def train():
         if not path.exists():
             path.mkdir()
         plt.imshow(image[:, :], cmap=plt.cm.gray)
-        plt.savefig(path / "epoch{0}.pdf".format(epoch, index))
+        plt.savefig(path / "epoch{0}.jpg".format(epoch, index))
 
         generator.save_weights('generator.h5')
         discriminator.save_weights('discriminator.h5')

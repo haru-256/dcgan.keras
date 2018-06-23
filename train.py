@@ -73,7 +73,7 @@ def train():
                 if not path.exists():
                     path.mkdir()
                 plt.imshow(image[:, :], cmap=plt.cm.gray)
-                plt.savefig(path / "epoch{0}index{1}.pdf".format(epoch, index))
+                plt.savefig(path / "epoch{0}index{1}.jpg".format(epoch, index))
             # discriminatorを更新
             X = np.concatenate((image_batch, generated_images), axis=0)
             y = [1]*BATCH_SIZE + [0]*BATCH_SIZE
